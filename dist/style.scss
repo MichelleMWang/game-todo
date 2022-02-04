@@ -1,0 +1,13 @@
+#navbar{
+    display: flex; 
+    flex-direction: row; 
+    #nav-items{
+        display: flex; 
+        flex-direction: row; 
+        
+        text-decoration: none;
+    }
+}
+p{
+    color: pink; 
+}
