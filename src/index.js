@@ -1,3 +1,3 @@
-/*
-Todo properties: 
-title, description, duedate, priority */
+function loadPage() {
+    
+}
