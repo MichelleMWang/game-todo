@@ -16,7 +16,14 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+#navbar #nav-items a {
   text-decoration: none;
+}
+
+#navbar #nav-items ul {
+  list-style: none;
 }
 
 p {
