@@ -1,3 +1,19 @@
+body {
+  background-color: #505a6b;
+  opacity: .4;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-image {
+  background-image: url("./assets/barbara-bg.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 #navbar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5,7 +21,8 @@
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
-          flex-direction: row;
+          flex-direction: row; 
+  background-color: #423855;
 }
 
 #navbar #nav-items {
@@ -18,15 +35,19 @@
           flex-direction: row;
 }
 
-#navbar #nav-items a {
+a {
   text-decoration: none;
+  color: white;
 }
 
-#navbar #nav-items ul {
+li {
   list-style: none;
+  padding: 1rem;
 }
 
-p {
-  color: pink;
+button {
+  background-color: transparent;
+  color: white;
+  border-color: white;
 }
 /*# sourceMappingURL=style.css.map */
