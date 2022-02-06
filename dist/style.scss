@@ -1,8 +1,12 @@
 body{
-    background-color: rgb(80, 90, 107, .4);  
-    color: white; 
     margin: 0; 
     padding: 0;
+}
+.body{
+    background-color: rgba(80, 90, 107, .6);  
+    color: white; 
+    width: 100vw; 
+    height: 100vh;
 }
 .bg-image{
     background-image: url('./assets/barbara-bg.jpg'); 
@@ -10,11 +14,17 @@ body{
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover; 
+    width: 100vw; 
+    height: 100vh;
+    position: absolute; 
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    z-index: -100000; 
 }
 #navbar{
     display: flex; 
     flex-direction: row; 
-    background-color:rgb(66, 56, 85, .8); 
+    background-color:rgba(72, 57, 99, 0.6); 
     #nav-items{
         display: flex; 
         flex-direction: row; 
@@ -32,4 +42,24 @@ button{
     background-color: transparent; 
     color: white; 
     border-color: white; 
+}
+.commissions-item{
+    background-color: rgba(82, 78, 128, 0.5); 
+    width: 50vw;  
+    .commissions-item-left{
+        display: flex; 
+        flex-direction: row; 
+        align-items: center; 
+        height: 3rem; 
+        h3{
+            margin: 0; 
+            padding: 0; 
+            margin-left: .5rem; 
+        }
+        .commission-img{
+            object-fit: contain;
+            max-height: 100%; 
+            width: auto;  
+        }
+    }
 }
