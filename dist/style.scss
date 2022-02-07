@@ -28,11 +28,31 @@ body{
     #nav-items{
         display: flex; 
         flex-direction: row; 
-    }
+    }  
+}
+#add-quest-button{ 
+    display: none; 
+    z-index: 10000;
+    margin-bottom: 15px; 
+    border: none;  
+}
+.hover-div:hover > #add-quest-button {
+    display: block; 
+    cursor: pointer; 
+}
+.hover-div{
+    min-width: 100px; 
+    min-height: 100px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
 }
 a{
     text-decoration: none;
     color: white; 
+    &:hover{
+        cursor: pointer; 
+    }
 }
 li{
     list-style: none; 

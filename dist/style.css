@@ -45,9 +45,39 @@ body {
           flex-direction: row;
 }
 
+#add-quest-button {
+  display: none;
+  z-index: 10000;
+  margin-bottom: 15px;
+  border: none;
+}
+
+.hover-div:hover > #add-quest-button {
+  display: block;
+  cursor: pointer;
+}
+
+.hover-div {
+  min-width: 100px;
+  min-height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 a {
   text-decoration: none;
   color: white;
+}
+
+a:hover {
+  cursor: pointer;
 }
 
 li {
