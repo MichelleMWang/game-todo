@@ -92,4 +92,8 @@ button {
   max-height: 100%;
   width: auto;
 }
+
+.commissions-item .commissions-item-left .commission-img:hover {
+  cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */
