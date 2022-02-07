@@ -60,6 +60,9 @@ button{
             object-fit: contain;
             max-height: 100%; 
             width: auto;  
+            &:hover{
+                cursor: pointer; 
+            }
         }
     }
 }

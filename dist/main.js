@@ -1,0 +1,1 @@
+(()=>{"use strict";(()=>{const t=document.getElementById("add-quest-button"),e=document.getElementById("nav-items");return t.addEventListener("click",(()=>{const t=document.createElement("input");t.type="text",e.appendChild(t)})),{}})()()})();
