@@ -32,6 +32,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background-color: rgba(72, 57, 99, 0.6);
 }
 
@@ -125,5 +128,10 @@ button {
 
 .commissions-item .commissions-item-left .commission-img:hover {
   cursor: pointer;
+}
+
+#add-commissions-button {
+  margin-top: 1rem;
+  padding: 1rem;
 }
 /*# sourceMappingURL=style.css.map */

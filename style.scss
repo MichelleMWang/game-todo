@@ -24,6 +24,7 @@ body{
 #navbar{
     display: flex; 
     flex-direction: row; 
+    justify-content: center; 
     background-color:rgba(72, 57, 99, 0.6); 
     #nav-items{
         display: flex; 
@@ -85,4 +86,8 @@ button{
             }
         }
     }
+}
+#add-commissions-button{
+    margin-top: 1rem; 
+    padding: 1rem; 
 }
