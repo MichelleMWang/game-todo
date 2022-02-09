@@ -1,5 +1,3 @@
 import quests from './quest.js'; 
-//function loadPage() {
-    quests();
-     
-//}
+import daily from './daily-commissions.js'; 
+

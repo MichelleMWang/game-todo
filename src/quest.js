@@ -2,12 +2,12 @@ const quests = (() => {
     const addQuestBut = document.getElementById('add-quest-button'); 
     const navItems = document.getElementById('nav-items'); 
 
-    let _quests = [
-        {name: 'Schoolwork', 
+    let _quests = [{
+        name: 'Schoolwork', 
         commissions: [{
             name: 'Finish Physics Wks'
-        }]}
-    ]; 
+        }]
+    }]; 
     let _currentQuest = _quests.find(quest => {
         return quest.name = 'Schoolwork'; 
     }); //CHANGE LATER TO INDEX.JS 
@@ -58,7 +58,6 @@ const quests = (() => {
 
     }
 
-
     //Commissions
     const commUl = document.getElementById('commissions-ul'); 
     const addCommButton = document.getElementById('add-commissions-button'); 
@@ -103,6 +102,7 @@ const quests = (() => {
         const commImg = document.createElement('img'); 
         commImg.classList.add('commission-img'); 
         commImg.src = './assets/Icon-Commission.png'; 
+        checkOffCommissionButton(commImg); 
         const commTitle = document.createElement('h3'); 
         commTitle.classList.add('commissions-title'); 
         commTitle.textContent = commission.name; 
@@ -112,6 +112,21 @@ const quests = (() => {
         commli.appendChild(commDiv); 
         commUl.insertBefore(commli, addCommButton);  
     }
+
+    //Check off Commission 
+    function checkOffCommissionButton(icon) {
+        icon.addEventListener('click', (e) => {
+            const nameH3 = icon.nextElementSibling; 
+            console.log(nameH3); 
+            const commName = nameH3.textContent; 
+            
+
+            
+            const li = e.target.closest('.commissions-item'); 
+            li.remove(); 
+        }); 
+    }
+
 
     function getQuests() {
         return _quests; 
