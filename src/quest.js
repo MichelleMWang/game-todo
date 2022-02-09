@@ -110,7 +110,7 @@ const quests = (() => {
         commDiv.appendChild(commTitle); 
 
         commli.appendChild(commDiv); 
-        commUl.appendChild(commli); 
+        commUl.insertBefore(commli, addCommButton);  
     }
 
     function getQuests() {
