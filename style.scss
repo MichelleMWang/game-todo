@@ -1,8 +1,12 @@
+@font-face {
+    font-family: 'ja-jp'; 
+    src: url('./assets/ja-jp.ttf'); 
+}
 body{
     margin: 0; 
     padding: 0;
     p, h3, button, li, a {
-        font-family: 'Times New Roman', Times, serif;
+        font-family: 'ja-jp'; 
     }
 }
 .body{
@@ -32,7 +36,7 @@ h3{
     display: flex; 
     flex-direction: row; 
     justify-content: center; 
-    background-color:rgba(72, 57, 99, 0.6); 
+    background-color:rgba(60, 47, 63, 0.4); 
     #nav-items{
         display: flex; 
         flex-direction: row; 
@@ -74,7 +78,7 @@ li{
 button{
     background-color: transparent; 
     color: white; 
-    border-color: white; 
+    border-color: white;  
     &:hover{
         cursor: pointer;
     }
@@ -89,6 +93,10 @@ button{
     background-color: rgba(82, 78, 128, 0.5); 
     max-width: 40vw;  
     margin: .5rem; 
+    &:hover{
+        border: 5px solid rgb(216, 212, 199); 
+        cursor: pointer; 
+    }
     .commissions-item-left{
         display: flex; 
         flex-direction: row; 
@@ -117,5 +125,5 @@ button{
 #add-commissions-button{
     margin-top: 1rem; 
     padding: 1rem; 
-    font-size: 18px; 
+    font-size: 16px; 
 }

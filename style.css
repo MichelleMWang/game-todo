@@ -1,10 +1,15 @@
+@font-face {
+  font-family: 'ja-jp';
+  src: url("./assets/ja-jp.ttf");
+}
+
 body {
   margin: 0;
   padding: 0;
 }
 
 body p, body h3, body button, body li, body a {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'ja-jp';
 }
 
 .body {
@@ -44,7 +49,7 @@ h3 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: rgba(72, 57, 99, 0.6);
+  background-color: rgba(60, 47, 63, 0.4);
 }
 
 #navbar #nav-items {
@@ -133,6 +138,11 @@ button:hover {
   margin: .5rem;
 }
 
+.commissions-item:hover {
+  border: 5px solid #d8d4c7;
+  cursor: pointer;
+}
+
 .commissions-item .commissions-item-left {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -176,6 +186,6 @@ button:hover {
 #add-commissions-button {
   margin-top: 1rem;
   padding: 1rem;
-  font-size: 18px;
+  font-size: 16px;
 }
 /*# sourceMappingURL=style.css.map */
