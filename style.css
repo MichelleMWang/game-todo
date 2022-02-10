@@ -124,12 +124,12 @@ button:hover {
   cursor: pointer;
 }
 
-#daily-commissions-li a {
-  color: #faf2cf;
+.quest-item-a {
+  color: #e3e1ff;
 }
 
-.quest-item a {
-  color: #e3e1ff;
+.daily-commissions-a {
+  color: #faf2cf;
 }
 
 .commissions-item {
@@ -187,5 +187,11 @@ button:hover {
   margin-top: 1rem;
   padding: 1rem;
   font-size: 16px;
+}
+
+.current-quest {
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+  border: 1px;
 }
 /*# sourceMappingURL=style.css.map */

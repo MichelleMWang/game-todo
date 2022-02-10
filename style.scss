@@ -83,12 +83,14 @@ button{
         cursor: pointer;
     }
 }
-#daily-commissions-li{
-    a{color:rgb(250, 242, 207);} 
+
+.quest-item-a{
+    color:rgb(227, 225, 255); 
 }
-.quest-item{
-    a{color:rgb(227, 225, 255); }
+.daily-commissions-a{
+    color:rgb(250, 242, 207); 
 }
+
 .commissions-item{
     background-color: rgba(82, 78, 128, 0.5); 
     max-width: 40vw;  
@@ -126,4 +128,8 @@ button{
     margin-top: 1rem; 
     padding: 1rem; 
     font-size: 16px; 
+}
+.current-quest{
+    filter: brightness(120%);  
+    border: 1px; 
 }
