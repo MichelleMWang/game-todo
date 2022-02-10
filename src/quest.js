@@ -63,10 +63,12 @@ const quests = (() => {
         navItems.appendChild(newQuest); 
     }
     function loadQuest(quest){
+        removeCommissions(); 
+        if (quest.commissions.length !== 0) loadCommissionsDOM(quest); 
+    }
+    function removeCommissions(){
         const commissionsLi = document.querySelectorAll('.commissions-item'); 
         commissionsLi.forEach(commission => commission.remove()); 
-        
-        if (quest.commissions.length !== 0) loadCommissionsDOM(quest); 
     }
 
     //Commissions
@@ -90,21 +92,21 @@ const quests = (() => {
         }) 
         commUl.appendChild(submitBut); 
     })
-    function createCommission(name, quest){
+    function createCommission(name, quest){ //adds commission to _quest
         let comms = quest.commissions; 
-        console.log(comms); 
+        //console.log(comms); 
         const newComm = {name: name}; 
-        console.log(newComm); 
+        //console.log(newComm); 
         comms.push(newComm); 
         return newComm; 
     }
-    function loadCommissionsDOM(quest){
+    function loadCommissionsDOM(quest){ //calls createCommissionsDOM to load all commissions in quest to DOM 
         const comms = quest.commissions; 
         comms.forEach(comm => {
             createCommissionsDOM(comm); 
         })
     }
-    function createCommissionsDOM(commission){
+    function createCommissionsDOM(commission){ //creates commission in DOM, adds event listener to img 
         const commli = document.createElement('li'); 
         commli.classList.add('commissions-item'); 
         const commDiv = document.createElement('div'); 
@@ -138,6 +140,16 @@ const quests = (() => {
             li.remove(); 
         }); 
     }
+
+    //Daily Commissions Tab 
+    const dailyCommTab = document.getElementById('daily-commissions'); 
+    dailyCommTab.addEventListener('click', () => {
+        removeCommissions(); 
+        _quests.forEach(quest => {
+            
+            loadCommissionsDOM(quest); 
+        })
+    }); 
 
 
     function getQuests() {
