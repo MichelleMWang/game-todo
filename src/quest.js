@@ -10,8 +10,17 @@ const quests = (() => {
     }]; 
     let _currentQuest = _quests.find(quest => {
         return quest.name = 'Schoolwork'; 
-    }); //CHANGE LATER TO INDEX.JS 
-    console.log(_currentQuest);  
+    }); 
+    /* if ever change to different files 
+    function findCurrentQuest(questName){
+        return _quests.find(quest => 
+        quest.name = questName); 
+    }
+    function changeCurrentQuest(questName){
+        _currentQuest = _quests.find(quest => 
+            quest.name = questName); 
+    }
+    */
 
     addQuestBut.addEventListener('click', () => {
         const input = document.createElement('input');
@@ -25,10 +34,9 @@ const quests = (() => {
             const name = input.value;
             input.remove(); 
             submitBut.remove(); 
-            addQuestToNav(name); 
+            
             const newQuest = createQuest(name)
-            loadQuest(newQuest);
-            _currentQuest = newQuest; //CHANGE LATER TO INDEX.JS
+            addQuestToNav(name, newQuest); 
         })
         navItems.appendChild(submitBut); 
     }); 
@@ -41,12 +49,16 @@ const quests = (() => {
         _quests.push(newQuest); 
         return newQuest;  
     }
-    function addQuestToNav(name){
+    function addQuestToNav(name, quest){
         const newQuest = document.createElement('li'); 
         newQuest.classList.add('quest-item'); 
         const newQuestLink = document.createElement('a'); 
         newQuestLink.classList.add('quest-item-a'); 
         newQuestLink.textContent = name; 
+        newQuestLink.addEventListener('click', () => {
+            loadQuest(quest); 
+            _currentQuest = quest; 
+        })
         newQuest.appendChild(newQuestLink); 
         navItems.appendChild(newQuest); 
     }
@@ -55,7 +67,6 @@ const quests = (() => {
         commissionsLi.forEach(commission => commission.remove()); 
         
         if (quest.commissions.length !== 0) loadCommissionsDOM(quest); 
-
     }
 
     //Commissions
@@ -117,11 +128,12 @@ const quests = (() => {
     function checkOffCommissionButton(icon) {
         icon.addEventListener('click', (e) => {
             const nameH3 = icon.nextElementSibling; 
-            console.log(nameH3); 
             const commName = nameH3.textContent; 
-            
+            const arr = _currentQuest.commissions; 
+            const index = arr.findIndex(i => i.name === commName); 
+            arr.splice(index, 1); 
 
-            
+            console.log("index: " + index);
             const li = e.target.closest('.commissions-item'); 
             li.remove(); 
         }); 
