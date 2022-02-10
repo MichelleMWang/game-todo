@@ -2,25 +2,27 @@ const quests = (() => {
     const addQuestBut = document.getElementById('add-quest-button'); 
     const navItems = document.getElementById('nav-items'); 
 
-    let _quests = [{
-        name: 'Schoolwork', 
-        commissions: [{
-            name: 'Finish Physics Wks'
-        }]
-    }]; 
-    let _currentQuest = _quests.find(quest => {
-        return quest.name = 'Schoolwork'; 
-    }); 
-    /* if ever change to different files 
-    function findCurrentQuest(questName){
-        return _quests.find(quest => 
-        quest.name = questName); 
+    let _quests = [
+        {
+            name: 'Daily Commissions', 
+            commissions: []
+        }, 
+    ]; 
+    let _currentQuest = _quests[0];  
+
+    function changeCurrentQuest(quest){
+        for (const a of document.querySelectorAll('.quest-item-a')){
+            if (a.textContent.includes(_currentQuest.name)){
+                a.classList.remove('current-quest'); 
+            } 
+        };
+        _currentQuest = quest; 
+        for (const a of document.querySelectorAll('.quest-item-a')){
+            if (a.textContent.includes(_currentQuest.name)){
+                a.classList.add('current-quest'); 
+            } 
+        };
     }
-    function changeCurrentQuest(questName){
-        _currentQuest = _quests.find(quest => 
-            quest.name = questName); 
-    }
-    */
 
     addQuestBut.addEventListener('click', () => {
         const input = document.createElement('input');
@@ -57,7 +59,7 @@ const quests = (() => {
         newQuestLink.textContent = name; 
         newQuestLink.addEventListener('click', () => {
             loadQuest(quest); 
-            _currentQuest = quest; 
+            changeCurrentQuest(quest);  
         })
         newQuest.appendChild(newQuestLink); 
         navItems.appendChild(newQuest); 
@@ -135,7 +137,7 @@ const quests = (() => {
             const index = arr.findIndex(i => i.name === commName); 
             arr.splice(index, 1); 
 
-            console.log("index: " + index);
+            //console.log("index: " + index);
             const li = e.target.closest('.commissions-item'); 
             li.remove(); 
         }); 
@@ -145,18 +147,16 @@ const quests = (() => {
     const dailyCommTab = document.getElementById('daily-commissions'); 
     dailyCommTab.addEventListener('click', () => {
         removeCommissions(); 
-        _quests.forEach(quest => {
-            
-            loadCommissionsDOM(quest); 
-        })
+        changeCurrentQuest(_quests[0]); 
+        for (let i = 0; i < _quests.length; i++){
+            loadCommissionsDOM(_quests[i]); 
+        }
     }); 
 
-
-    function getQuests() {
-        return _quests; 
-    }
     return{
-         getQuests   
+        createQuest,  
+        addQuestToNav, 
+        createCommission  
     }
     
 })(); 

@@ -1,3 +1,6 @@
 import quests from './quest.js'; 
-import daily from './daily-commissions.js'; 
 
+const defaultQuest = quests.createQuest('Schoolwork'); 
+quests.createCommission('Finish Physics Worksheet', defaultQuest);
+quests.addQuestToNav('Schoolwork', defaultQuest); 
+ 
