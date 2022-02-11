@@ -120,6 +120,8 @@ const quests = (() => {
         checkOffCommissionButton(commImg); 
         const commTitle = document.createElement('h3'); 
         commTitle.classList.add('commissions-title'); 
+        //add subtag with quest 
+        //can use this to find quest when deleting comms from daily
         commTitle.textContent = commission.name; 
         commDiv.appendChild(commImg); 
         commDiv.appendChild(commTitle); 
