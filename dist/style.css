@@ -210,6 +210,11 @@ a.current-quest.quest-item-a:after,
           transform: translateY(4px);
 }
 
+.commission-quest-tag {
+  font-size: 12px;
+  font-weight: normal;
+}
+
 #add-commissions-button {
   margin-top: 1rem;
   padding: 1rem;

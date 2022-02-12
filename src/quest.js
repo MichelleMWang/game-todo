@@ -90,7 +90,7 @@ const quests = (() => {
             input.remove(); 
             submitBut.remove(); 
             let newComm = createCommission(commName, _currentQuest); 
-            createCommissionsDOM(newComm); 
+            createCommissionsDOM(newComm, _currentQuest); 
         }) 
         commUl.appendChild(submitBut); 
     })
@@ -105,10 +105,10 @@ const quests = (() => {
     function loadCommissionsDOM(quest){ //calls createCommissionsDOM to load all commissions in quest to DOM 
         const comms = quest.commissions; 
         comms.forEach(comm => {
-            createCommissionsDOM(comm); 
+            createCommissionsDOM(comm, quest); 
         })
     }
-    function createCommissionsDOM(commission){ //creates commission in DOM, adds event listener to img 
+    function createCommissionsDOM(commission, quest){ //creates commission in DOM, adds event listener to img 
         const commli = document.createElement('li'); 
         commli.classList.add('commissions-item'); 
         const commDiv = document.createElement('div'); 
@@ -120,11 +120,18 @@ const quests = (() => {
         checkOffCommissionButton(commImg); 
         const commTitle = document.createElement('h3'); 
         commTitle.classList.add('commissions-title'); 
+        commTitle.textContent = commission.name; 
+
+        const questTag = document.createElement('h4'); 
+        questTag.classList.add('commission-quest-tag'); 
+        questTag.textContent = quest.name; 
+
         //add subtag with quest 
         //can use this to find quest when deleting comms from daily
-        commTitle.textContent = commission.name; 
+        
         commDiv.appendChild(commImg); 
         commDiv.appendChild(commTitle); 
+        commDiv.appendChild(questTag); 
 
         commli.appendChild(commDiv); 
         commUl.insertBefore(commli, addCommButton);  
@@ -158,7 +165,8 @@ const quests = (() => {
     return{
         createQuest,  
         addQuestToNav, 
-        createCommission  
+        createCommission, 
+        loadQuest
     }
     
 })(); 
