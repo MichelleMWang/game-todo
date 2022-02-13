@@ -24,6 +24,15 @@ h3 {
   font-size: 18px;
 }
 
+input[type=text] {
+  background-color: #d8d4c7;
+  min-height: 25px;
+}
+
+.input-div {
+  margin-top: 1rem;
+}
+
 .bg-image {
   background-image: url("./assets/barbara-bg.jpg");
   height: 100%;
@@ -118,6 +127,7 @@ button {
   background-color: transparent;
   color: white;
   border-color: white;
+  min-height: 30px;
 }
 
 button:hover {
