@@ -118,6 +118,9 @@ const quests = (() => {
         commImg.classList.add('commission-img'); 
         commImg.src = './assets/Icon-Commission.png'; 
         checkOffCommissionButton(commImg); 
+
+        const infoDiv = document.createElement('div');
+        infoDiv.classList.add('comm-info-div'); 
         const commTitle = document.createElement('h3'); 
         commTitle.classList.add('commissions-title'); 
         commTitle.textContent = commission.name; 
@@ -130,8 +133,9 @@ const quests = (() => {
         //can use this to find quest when deleting comms from daily
         
         commDiv.appendChild(commImg); 
-        commDiv.appendChild(commTitle); 
-        commDiv.appendChild(questTag); 
+        infoDiv.appendChild(commTitle); 
+        infoDiv.appendChild(questTag); 
+        commDiv.appendChild(infoDiv); 
 
         commli.appendChild(commDiv); 
         commUl.insertBefore(commli, addCommButton);  
