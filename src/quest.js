@@ -144,9 +144,15 @@ const quests = (() => {
     //Check off Commission 
     function checkOffCommissionButton(icon) {
         icon.addEventListener('click', (e) => {
-            const nameH3 = icon.nextElementSibling; 
-            const commName = nameH3.textContent; 
-            const arr = _currentQuest.commissions; 
+            const infoDiv = icon.nextElementSibling; 
+            //console.log(infoDiv); 
+            const titleDiv = infoDiv.querySelector('.commissions-title'); 
+            const commName = titleDiv.textContent; 
+            const questDiv = infoDiv.querySelector('.commission-quest-tag'); 
+            const questName = questDiv.textContent; 
+            //console.log(`${commName} ${questName}`);
+            const commQuest = _quests.find(quest => quest.name == questName);  
+            const arr = commQuest.commissions; 
             const index = arr.findIndex(i => i.name === commName); 
             arr.splice(index, 1); 
 
