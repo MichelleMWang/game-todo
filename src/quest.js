@@ -25,6 +25,7 @@ const quests = (() => {
     }
 
     addQuestBut.addEventListener('click', () => {
+ 
         const input = document.createElement('input');
         input.type = 'text'; 
         input.classList.add('input-textbox'); 
@@ -78,21 +79,26 @@ const quests = (() => {
     const addCommButton = document.getElementById('add-commissions-button'); 
 
     addCommButton.addEventListener('click', () => {
+        const inputDiv = document.createElement('div'); 
+        inputDiv.classList.add('input-div'); 
+
         const input = document.createElement('input');
         input.type = 'text'; 
         input.classList.add('input-textbox'); 
-        commUl.appendChild(input); 
+        inputDiv.appendChild(input); 
 
         const submitBut = document.createElement('button'); 
         submitBut.textContent = 'Add';
         submitBut.addEventListener('click', () => {
             const commName = input.value; 
-            input.remove(); 
-            submitBut.remove(); 
+            //input.remove(); 
+            //submitBut.remove();
+            inputDiv.remove(); 
             let newComm = createCommission(commName, _currentQuest); 
             createCommissionsDOM(newComm, _currentQuest); 
         }) 
-        commUl.appendChild(submitBut); 
+        inputDiv.appendChild(submitBut); 
+        commUl.appendChild(inputDiv); 
     })
     function createCommission(name, quest){ //adds commission to _quest
         let comms = quest.commissions; 
