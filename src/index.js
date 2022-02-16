@@ -1,6 +1,8 @@
 import quests from './quest.js';
- 
-const defaultQuest = quests.createQuest('Schoolwork'); 
-quests.createCommission('Finish Physics Worksheet', defaultQuest);
-quests.addQuestToNav('Schoolwork', defaultQuest); 
-quests.loadQuest(defaultQuest); 
+console.log(localStorage.length); 
+for (let i = 0; i < localStorage.length; i++){
+    console.log(JSON.stringify(localStorage.getItem(localStorage.key(i)))); 
+}
+
+quests.setStyles(); 
+
