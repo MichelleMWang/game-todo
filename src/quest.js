@@ -5,7 +5,7 @@ const quests = (() => {
     /*local storage notes: 
         get, get, key, remove methods given  */
     //checking if local storage available 
-    if (storageAvailable('localStorage')) {
+    /*if (storageAvailable('localStorage')) {
         // Yippee! We can use localStorage awesomeness
     } else {
         // Too bad, no localStorage for us
@@ -34,16 +34,40 @@ const quests = (() => {
                 // acknowledge QuotaExceededError only if there's something already stored
                 (storage && storage.length !== 0);
         }
-    }
+    } */ 
+
+    //when first goes on page, checks if has data and loads it, otherwise sets defaults 
+    /*function loadPage() {
+        if (localStorage.length !== 0){
+            //loop through all quests/commissions and load them on to page 
+            setStyles(); 
+        } //else it will load default and if any changes are made, it is edited already in local storage 
+    } */
+
 
     //start of quests 
     let _quests = [
         {
-            name: 'Daily Commissions', 
-            commissions: []
+           name: 'Daily Commissions', 
+           commissions: []
         }, 
     ]; 
     let _currentQuest = _quests[0];  
+
+    function setStyles() {
+        if (localStorage.length == 0){
+            localStorage.setItem('Daily Commissions', JSON.stringify(_quests[0])); 
+        } else {
+        //loop through all quests/commissions and load them on to page 
+            for (let i = 1; i < localStorage.length; i++){
+                let questStor = localStorage.getItem(localStorage.key(i));
+                let quest = JSON.parse(questStor);  
+                console.log(quest.name);
+                addQuestToNav(quest.name, quest); 
+            }
+            loadDailyCommissions(); 
+        }
+    }
 
     function changeCurrentQuest(quest){
         for (const a of document.querySelectorAll('.quest-item-a')){
@@ -60,7 +84,6 @@ const quests = (() => {
     }
 
     addQuestBut.addEventListener('click', () => {
- 
         const input = document.createElement('input');
         input.type = 'text'; 
         input.classList.add('input-textbox'); 
@@ -85,6 +108,11 @@ const quests = (() => {
             commissions: []
         }; 
         _quests.push(newQuest); 
+        //local storage
+        /*new to edit: creating quest, editing quest, removing quest */
+        /* the name of the quest, then same name to edit on other function*/
+        localStorage.setItem(`${newQuest.name}`, JSON.stringify(newQuest)); 
+        console.log('in createQuest. local storage: ' + localStorage); 
         return newQuest;  
     }
     function addQuestToNav(name, quest){
@@ -100,11 +128,11 @@ const quests = (() => {
         newQuest.appendChild(newQuestLink); 
         navItems.appendChild(newQuest); 
     }
-    function loadQuest(quest){
+    function loadQuest(quest){ //in dom 
         removeCommissions(); 
         if (quest.commissions.length !== 0) loadCommissionsDOM(quest); 
     }
-    function removeCommissions(){
+    function removeCommissions(){ //from dom 
         const commissionsLi = document.querySelectorAll('.commissions-item'); 
         commissionsLi.forEach(commission => commission.remove()); 
     }
@@ -141,6 +169,9 @@ const quests = (() => {
         const newComm = {name: name}; 
         //console.log(newComm); 
         comms.push(newComm); 
+
+        //local storage: editing quests 
+        localStorage.setItem(`${quest.name}`, JSON.stringify(quest)); 
         return newComm; 
     }
     function loadCommissionsDOM(quest){ //calls createCommissionsDOM to load all commissions in quest to DOM 
@@ -185,14 +216,18 @@ const quests = (() => {
     //Check off Commission 
     function checkOffCommissionButton(icon) {
         icon.addEventListener('click', (e) => {
+           // console.log('in event listener')
             const infoDiv = icon.nextElementSibling; 
             //console.log(infoDiv); 
             const titleDiv = infoDiv.querySelector('.commissions-title'); 
             const commName = titleDiv.textContent; 
             const questDiv = infoDiv.querySelector('.commission-quest-tag'); 
             const questName = questDiv.textContent; 
-            //console.log(`${commName} ${questName}`);
-            const commQuest = _quests.find(quest => quest.name == questName);  
+           // console.log(`${commName} ${questName}`);
+           // console.log(_quests); 
+            //const commQuest = _quests.find(quest => quest.name == questName); 
+            const commQuest = JSON.parse(localStorage.getItem(`${questName}`)); 
+           // console.log(commQuest); 
             const arr = commQuest.commissions; 
             const index = arr.findIndex(i => i.name === commName); 
             arr.splice(index, 1); 
@@ -200,24 +235,33 @@ const quests = (() => {
             //console.log("index: " + index);
             const li = e.target.closest('.commissions-item'); 
             li.remove(); 
+
+            //local storage remove comm from quest 
+            localStorage.setItem(`${commQuest.name}`, JSON.stringify(commQuest));
         }); 
     }
 
     //Daily Commissions Tab 
+    //TODO: change this to work with local storage (loop through local storage items )
     const dailyCommTab = document.getElementById('daily-commissions'); 
     dailyCommTab.addEventListener('click', () => {
+        loadDailyCommissions(); 
+    }); 
+    function loadDailyCommissions() {
         removeCommissions(); 
         changeCurrentQuest(_quests[0]); 
-        for (let i = 0; i < _quests.length; i++){
-            loadCommissionsDOM(_quests[i]); 
+        for (let i = 0; i < localStorage.length; i++){
+            //loadCommissionsDOM(_quests[i]); 
+            loadCommissionsDOM(JSON.parse(localStorage.getItem(localStorage.key(i)))); 
         }
-    }); 
+    }
 
     return{
         createQuest,  
         addQuestToNav, 
         createCommission, 
-        loadQuest
+        loadQuest, 
+        setStyles
     }
     
 })(); 
